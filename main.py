@@ -614,7 +614,7 @@ st.markdown("""
 
 
 st.title("SOME OF GTM TOOLKIT")
-st.write("Web Version - Xây dựng bởi Trịnh Đức Hiếu & Gemini")
+st.write("Web Version - by a GTM'er of Nutifood")
 
 # --- THANH BÊN VÀ QUẢNG CÁO ---
 with st.sidebar:
@@ -1057,6 +1057,7 @@ with tab2:
                         st.subheader("Bản đồ trực quan")
 
                         st.components.v1.html(map_html_bytes, height=600, scrolling=True)
+
 
 
 
