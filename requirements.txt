@@ -1,0 +1,10 @@
+pandas
+numpy
+scikit-learn
+rapidfuzz
+unidecode
+streamlit
+folium
+networkx
+openpyxl
+xlsxwriter
