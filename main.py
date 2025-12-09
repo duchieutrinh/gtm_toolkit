@@ -620,8 +620,7 @@ ad_code = """
 </script>
 """
 
-# Nhúng quảng cáo vào ứng dụng
-st.components.v1.html(ad_code, height=250)
+
 
 
 st.title("SOME OF GTM TOOLKIT")
@@ -641,6 +640,8 @@ with st.sidebar:
 
     st.divider()
     st.info("Mẹo: Các tính năng chính nằm ở các tab bên trên.")
+    # Nhúng quảng cáo vào ứng dụng
+    st.components.v1.html(ad_code, height=250)
 
 
 # --- Khởi tạo Session State để lưu trữ dữ liệu ---
@@ -1054,6 +1055,7 @@ with tab2:
                         st.subheader("Bản đồ trực quan")
 
                         st.components.v1.html(map_html_bytes, height=600, scrolling=True)
+
 
 
 
