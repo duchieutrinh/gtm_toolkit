@@ -586,6 +586,14 @@ def run_duplicate_detection_logic(config, status_callback, progress_callback):
         st.error(f"Đã xảy ra lỗi trong quá trình quét: {e}")
         return None
 
+# --- TÍCH HỢP GOOGLE ADSENSE (MÃ XÁC MINH) ---
+# Đoạn mã này cần được đặt ở đầu ứng dụng để Google có thể xác minh trang web.
+adsense_script = """
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4683040057330545"
+     crossorigin="anonymous"></script>
+"""
+st.components.v1.html(adsense_script, height=0)
+
 # =============================================================================
 # GIAO DIỆN STREAMLIT
 # =============================================================================
@@ -1047,6 +1055,7 @@ with tab2:
                         st.subheader("Bản đồ trực quan")
 
                         st.components.v1.html(map_html_bytes, height=600, scrolling=True)
+
 
 
 
