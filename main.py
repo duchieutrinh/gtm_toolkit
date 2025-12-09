@@ -16,6 +16,35 @@ except ImportError:
 import networkx as nx
 import io
 
+# =============================================================================
+# TÌM KIẾM $$$
+# =============================================================================
+def show_adsense_ad(publisher_id, slot_id, ad_format="auto", is_responsive=True):
+    """
+    Tạo và hiển thị một khối quảng cáo Google AdSense.
+
+    Args:
+        publisher_id (str): ID nhà xuất bản của bạn (vd: "ca-pub-1234567890123456").
+        slot_id (str): ID của đơn vị quảng cáo (vd: "1234567890").
+        ad_format (str): Định dạng quảng cáo, mặc định là "auto".
+        is_responsive (bool): Quảng cáo có đáp ứng hay không, mặc định là True.
+    """
+    ad_script = f"""
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={publisher_id}"
+             crossorigin="anonymous"></script>
+        <!-- Tên đơn vị quảng cáo của bạn -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="{publisher_id}"
+             data-ad-slot="{slot_id}"
+             data-ad-format="{ad_format}"
+             data-full-width-responsive="{str(is_responsive).lower()}"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({{}});
+        </script>
+    """
+    st.components.v1.html(ad_script, height=100) # Có thể điều chỉnh chiều cao nếu cần
+
 # --- Hằng số ---
 EARTH_RADIUS_METERS = 6371000.0
 
@@ -1002,6 +1031,7 @@ with tab2:
                         st.subheader("Bản đồ trực quan")
 
                         st.components.v1.html(map_html_bytes, height=600, scrolling=True)
+
 
 
 
