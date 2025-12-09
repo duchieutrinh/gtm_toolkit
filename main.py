@@ -562,25 +562,32 @@ def run_duplicate_detection_logic(config, status_callback, progress_callback):
 # =============================================================================
 
 st.set_page_config(page_title="VÀI CÔNG CỤ CỦA GTM", layout="wide")
-ad_code = """
-<!-- Google AdSense Code -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-XXXXXX"
-     data-ad-slot="YYYYYY"
-     data-ad-format="auto"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-"""
+
+# 1. Script AdSense thường đặt trong <head>
 adsense_head = """
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4683040057330545"
      crossorigin="anonymous"></script>
 """
 
+# Nhúng script vào DOM (height=0 để không chiếm chỗ)
 st.components.v1.html(adsense_head, height=0)
 
+# 2. Vùng hiển thị quảng cáo
+ad_code = """
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4683040057330545"
+     data-ad-slot="1234567890"
+     data-ad-format="auto"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+"""
+
+# Nhúng quảng cáo vào ứng dụng
 st.components.v1.html(ad_code, height=250)
+
+
 st.title("SOME OF GTM TOOLKIT")
 st.write("Web Version - Xây dựng bởi Trịnh Đức Hiếu & Gemini")
 
@@ -995,5 +1002,6 @@ with tab2:
                         st.subheader("Bản đồ trực quan")
 
                         st.components.v1.html(map_html_bytes, height=600, scrolling=True)
+
 
 
