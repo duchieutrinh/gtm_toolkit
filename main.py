@@ -564,7 +564,7 @@ def run_duplicate_detection_logic(config, status_callback, progress_callback):
 st.set_page_config(page_title="Công cụ BallTree", layout="wide")
 
 st.title("Công cụ tìm điểm lân cận bằng BallTree")
-st.write("Phiên bản Web - Xây dựng bởi Trịnh Đức Hiếu & Gemini")
+st.write("Web Version - Xây dựng bởi Trịnh Đức Hiếu & Gemini")
 
 # --- Khởi tạo Session State để lưu trữ dữ liệu ---
 if 'abbreviation_dict' not in st.session_state:
@@ -975,4 +975,5 @@ with tab2:
                         
                         # Hiển thị bản đồ
                         st.subheader("Bản đồ trực quan")
+
                         st.components.v1.html(map_html_bytes, height=600, scrolling=True)
