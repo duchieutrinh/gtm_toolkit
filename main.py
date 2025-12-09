@@ -618,8 +618,8 @@ st.write("Web Version - Xây dựng bởi Trịnh Đức Hiếu & Gemini")
 
 # --- THANH BÊN VÀ QUẢNG CÁO ---
 with st.sidebar:
-    st.header("Ủng hộ nhà phát triển")
-    st.write("Việc hiển thị quảng cáo giúp chúng tôi duy trì và phát triển công cụ này miễn phí.")
+    #st.header("Ủng hộ nhà phát triển")
+    #st.write("Việc hiển thị quảng cáo giúp chúng tôi duy trì và phát triển công cụ này miễn phí.")
     
     # !!! THAY THẾ CÁC GIÁ TRỊ SAU BẰNG ID CỦA BẠN !!!
     GOOGLE_ADSENSE_PUBLISHER_ID = "pub-4683040057330545" # Thay X... bằng Publisher ID của bạn
@@ -1057,6 +1057,7 @@ with tab2:
                         st.subheader("Bản đồ trực quan")
 
                         st.components.v1.html(map_html_bytes, height=600, scrolling=True)
+
 
 
 
