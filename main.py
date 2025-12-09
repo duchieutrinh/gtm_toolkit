@@ -609,16 +609,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # 2. Vùng hiển thị quảng cáo
-ad_code = """
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-4683040057330545"
-     data-ad-slot="1234567890"
-     data-ad-format="auto"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-"""
 
 
 
@@ -636,11 +626,23 @@ with st.sidebar:
     GOOGLE_ADSENSE_SLOT_ID = "1072456281" # Thay Y... bằng Ad Slot ID của bạn
 
     # Gọi hàm để hiển thị quảng cáo
+    
     show_adsense_ad(GOOGLE_ADSENSE_PUBLISHER_ID, GOOGLE_ADSENSE_SLOT_ID)
 
     st.divider()
     st.info("Mẹo: Các tính năng chính nằm ở các tab bên trên.")
     # Nhúng quảng cáo vào ứng dụng
+    ad_code = """
+        <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-4683040057330545"
+         data-ad-slot="1072456281"
+         data-ad-format="auto"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+"""
+
     st.components.v1.html(ad_code, height=250)
 
 
@@ -1055,6 +1057,7 @@ with tab2:
                         st.subheader("Bản đồ trực quan")
 
                         st.components.v1.html(map_html_bytes, height=600, scrolling=True)
+
 
 
 
