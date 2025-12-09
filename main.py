@@ -562,7 +562,25 @@ def run_duplicate_detection_logic(config, status_callback, progress_callback):
 # =============================================================================
 
 st.set_page_config(page_title="VÀI CÔNG CỤ CỦA GTM", layout="wide")
+ad_code = """
+<!-- Google AdSense Code -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-XXXXXX"
+     data-ad-slot="YYYYYY"
+     data-ad-format="auto"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+"""
+adsense_head = """
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4683040057330545"
+     crossorigin="anonymous"></script>
+"""
 
+st.components.v1.html(adsense_head, height=0)
+
+st.components.v1.html(ad_code, height=250)
 st.title("SOME OF GTM TOOLKIT")
 st.write("Web Version - Xây dựng bởi Trịnh Đức Hiếu & Gemini")
 
@@ -977,4 +995,5 @@ with tab2:
                         st.subheader("Bản đồ trực quan")
 
                         st.components.v1.html(map_html_bytes, height=600, scrolling=True)
+
 
