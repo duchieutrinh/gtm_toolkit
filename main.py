@@ -43,11 +43,11 @@ def show_adsense_ad(publisher_id, slot_id, ad_format="auto", is_responsive=True)
              (adsbygoogle = window.adsbygoogle || []).push({{}});
         </script>
     """
-    st.components.v1.html(ad_script, height=250) # Có thể điều chỉnh chiều cao nếu cần
+    
 
 # --- Hằng số ---
 EARTH_RADIUS_METERS = 6371000.0
-
+"""""
 # =============================================================================
 # CÁC HÀM LOGIC (TÁI SỬ DỤNG TỪ PHIÊN BẢN DESKTOP)
 # Chúng ta có thể sao chép gần như nguyên vẹn các hàm này.
@@ -1055,8 +1055,10 @@ with tab2:
                         
                         # Hiển thị bản đồ
                         st.subheader("Bản đồ trực quan")
+                        st.components.v1.html(ad_script, height=250) # Có thể điều chỉnh chiều cao nếu cần
 
                         st.components.v1.html(map_html_bytes, height=600, scrolling=True)
+
 
 
 
