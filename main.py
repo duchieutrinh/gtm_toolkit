@@ -561,9 +561,9 @@ def run_duplicate_detection_logic(config, status_callback, progress_callback):
 # GIAO DIỆN STREAMLIT
 # =============================================================================
 
-st.set_page_config(page_title="Công cụ BallTree", layout="wide")
+st.set_page_config(page_title="VÀI CÔNG CỤ CỦA GTM", layout="wide")
 
-st.title("Công cụ tìm điểm lân cận bằng BallTree")
+st.title("SOME OF GTM TOOLKIT")
 st.write("Web Version - Xây dựng bởi Trịnh Đức Hiếu & Gemini")
 
 # --- Khởi tạo Session State để lưu trữ dữ liệu ---
@@ -581,21 +581,21 @@ if 'dup_file_cols' not in st.session_state: st.session_state.dup_file_cols = []
 # --- Giao diện chính ---
 tab1, tab2, tab3, tab4 = st.tabs([
     "  Tìm điểm lân cận  ", 
-    "  Phân tích Tuyến đường  ", 
+    "  Phân tích Tuyến Bán hàng  ", 
     "  Đo khoảng cách NPP  ", 
     "  Tìm điểm trùng lặp  "
 ])
 
 with tab1:
-    st.header("Tìm điểm lân cận từ File Universal")
+    st.header("So khớp và tìm điểm trùng từ File Universal")
 
     # --- Cột chính và cột phụ ---
     main_col, options_col = st.columns(2)
 
     with main_col:
         st.subheader("1. Tải lên các file Excel")
-        uploaded_file_1 = st.file_uploader("Chọn File gốc (chứa điểm) - Universal", type="xlsx")
-        uploaded_file_2 = st.file_uploader("Chọn File so sánh (cần đưa kết quả vào)", type="xlsx")
+        uploaded_file_1 = st.file_uploader("Chọn File chứa điểm - Universal", type="xlsx")
+        uploaded_file_2 = st.file_uploader("Chọn File gốc để so sánh (cần đưa kết quả vào)", type="xlsx")
 
         # Đọc cột khi file được tải lên
         if uploaded_file_1:
@@ -977,3 +977,4 @@ with tab2:
                         st.subheader("Bản đồ trực quan")
 
                         st.components.v1.html(map_html_bytes, height=600, scrolling=True)
+
