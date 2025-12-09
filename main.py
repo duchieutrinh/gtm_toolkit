@@ -600,14 +600,13 @@ st.components.v1.html(adsense_script, height=0)
 
 st.set_page_config(page_title="VÀI CÔNG CỤ CỦA GTM", layout="wide")
 
-# 1. Script AdSense thường đặt trong <head>
-adsense_head = """
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4683040057330545"
-     crossorigin="anonymous"></script>
-"""
-
-# Nhúng script vào DOM (height=0 để không chiếm chỗ)
-st.components.v1.html(adsense_head, height=0)
+# --- TÍCH HỢP GOOGLE ADSENSE (MÃ XÁC MINH) ---
+# Đoạn mã này cần được đặt ở đầu ứng dụng để Google có thể xác minh trang web.
+# Sử dụng st.markdown với unsafe_allow_html=True để chèn trực tiếp vào <head>
+# Đây là cách hiệu quả hơn để các crawler (như của Google) có thể tìm thấy.
+st.markdown("""
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4683040057330545" crossorigin="anonymous"></script>
+""", unsafe_allow_html=True)
 
 # 2. Vùng hiển thị quảng cáo
 ad_code = """
@@ -1055,6 +1054,7 @@ with tab2:
                         st.subheader("Bản đồ trực quan")
 
                         st.components.v1.html(map_html_bytes, height=600, scrolling=True)
+
 
 
 
