@@ -43,7 +43,7 @@ def show_adsense_ad(publisher_id, slot_id, ad_format="auto", is_responsive=True)
              (adsbygoogle = window.adsbygoogle || []).push({{}});
         </script>
     """
-    st.components.v1.html(ad_script, height=100) # Có thể điều chỉnh chiều cao nếu cần
+    st.components.v1.html(ad_script, height=250) # Có thể điều chỉnh chiều cao nếu cần
 
 # --- Hằng số ---
 EARTH_RADIUS_METERS = 6371000.0
@@ -620,6 +620,22 @@ st.components.v1.html(ad_code, height=250)
 st.title("SOME OF GTM TOOLKIT")
 st.write("Web Version - Xây dựng bởi Trịnh Đức Hiếu & Gemini")
 
+# --- THANH BÊN VÀ QUẢNG CÁO ---
+with st.sidebar:
+    st.header("Ủng hộ nhà phát triển")
+    st.write("Việc hiển thị quảng cáo giúp chúng tôi duy trì và phát triển công cụ này miễn phí.")
+    
+    # !!! THAY THẾ CÁC GIÁ TRỊ SAU BẰNG ID CỦA BẠN !!!
+    GOOGLE_ADSENSE_PUBLISHER_ID = "pub-4683040057330545" # Thay X... bằng Publisher ID của bạn
+    GOOGLE_ADSENSE_SLOT_ID = "1072456281" # Thay Y... bằng Ad Slot ID của bạn
+
+    # Gọi hàm để hiển thị quảng cáo
+    show_adsense_ad(GOOGLE_ADSENSE_PUBLISHER_ID, GOOGLE_ADSENSE_SLOT_ID)
+
+    st.divider()
+    st.info("Mẹo: Các tính năng chính nằm ở các tab bên trên.")
+
+
 # --- Khởi tạo Session State để lưu trữ dữ liệu ---
 if 'abbreviation_dict' not in st.session_state:
     st.session_state.abbreviation_dict = {
@@ -1031,6 +1047,7 @@ with tab2:
                         st.subheader("Bản đồ trực quan")
 
                         st.components.v1.html(map_html_bytes, height=600, scrolling=True)
+
 
 
 
