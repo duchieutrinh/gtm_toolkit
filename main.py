@@ -558,18 +558,18 @@ def run_duplicate_detection_logic(config, status_callback, progress_callback):
         G = nx.Graph(); G.add_edges_from(pairs_df[['index_1', 'index_2']].values)
         group_info = [{'index': idx, 'ID_Nhom_Trung': f"Nhom_{i+1}"} for i, comp in enumerate(nx.connected_components(G)) if len(comp) > 1 for idx in comp]
         group_df = pd.DataFrame(group_info)
-        pairs_forward = pairs_df.rename(columns={'index_1': 'index', 'index_2': 'ID_Doi_Trung'})
-        pairs_backward = pairs_df.rename(columns={'index_2': 'index', 'index_1': 'ID_Doi_Trung'})
+        pairs_forward = pairs_df.rename(columns={'index_1': 'index', 'index_2': 'ID_trung'})
+        pairs_backward = pairs_df.rename(columns={'index_2': 'index', 'index_1': 'ID_trung'})
         all_pairs_info = pd.concat([pairs_forward, pairs_backward], ignore_index=True)
         all_pairs_info.rename(columns={'distance_m': 'Khoang_Cach_Trung(m)', 'name_score': 'Do_Khop_Ten_Trung(%)'}, inplace=True)
         extra_cols = config.get('extra_cols', [])
         if extra_cols:
             df_extra_info = df[['index'] + extra_cols].copy()
-            df_extra_info.columns = ['ID_Doi_Trung'] + [f"{col}_DoiTrung" for col in extra_cols]
-            all_pairs_info = pd.merge(all_pairs_info, df_extra_info, on='ID_Doi_Trung', how='left')
+            df_extra_info.columns = ['ID_trung'] + [f"{col}_trung" for col in extra_cols]
+            all_pairs_info = pd.merge(all_pairs_info, df_extra_info, on='ID_trung', how='left')
         result_df = df.copy()
         if not group_df.empty: result_df = pd.merge(result_df, group_df, on='index', how='left')
-        cols_to_merge = ['index', 'ID_Doi_Trung', 'Khoang_Cach_Trung(m)', 'Do_Khop_Ten_Trung(%)'] + [f"{col}_DoiTrung" for col in extra_cols]
+        cols_to_merge = ['index', 'ID_trung', 'Khoang_Cach_Trung(m)', 'Do_Khop_Ten_Trung(%)'] + [f"{col}_trung" for col in extra_cols]
         if not all_pairs_info.empty: result_df = pd.merge(result_df, all_pairs_info[cols_to_merge], on='index', how='left')
         
         status_callback("Đang tạo file Excel để tải về...")
@@ -614,7 +614,7 @@ st.markdown("""
 
 
 st.title("SOME OF GTM TOOLKIT")
-st.write("Web Version - by a GTM'er of Nutifood")
+st.write("Web Version - by GTM'er of Nutifood")
 
 # --- THANH BÊN VÀ QUẢNG CÁO ---
 with st.sidebar:
@@ -1058,6 +1058,7 @@ with tab2:
                         st.components.v1.html(ad_script, height=250) # Có thể điều chỉnh chiều cao nếu cần
 
                         st.components.v1.html(map_html_bytes, height=600, scrolling=True)
+
 
 
 
